@@ -6,7 +6,7 @@ import 'amfe-flexible'
 import '@/assets/reset.min.css'
 import 'vant/lib/index.css'
 /**处理最大宽度 */
-import {handleMaxWidth} from '@/assets/utils/';
+//import {handleMaxWidth} from '@/assets/utils/';
 handleMaxWidth();
 import router from "./router";
 import store from "./store";
