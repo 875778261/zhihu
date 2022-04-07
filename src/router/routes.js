@@ -10,26 +10,29 @@ const routes = [{
     path: '/detail',
     name: 'detail',
     meta: {},
-    component: () => import('@/views/Detail.vue')
+    component: () => import(/* webpackChunkName:"detail" */'@/views/Detail.vue')
 }, {
     path: '/person',
     name: 'person',
     meta: {},
-    component: () => import('@/views/Person.vue')
+    component: () => import(/* webpackChunkName:"person" */'@/views/Person.vue')
 }, {
     path: '/Login',
     name: 'login',
     meta: {},
-    component: () => import('@/views/Login.vue')
+    component: () => import(/* webpackChunkName:"person" */'@/views/Login.vue')
 }, {
     path: '/store',
     name: 'store',
     meta: {},
-    component: () => import('@/views/Store.vue')
+    component: () => import(/* webpackChunkName:"person" */'@/views/Store.vue')
 }, {
     path: '/update',
     name: 'update',
     meta: {},
-    component: () => import('@/views/Update.vue')
+    component: () => import(/* webpackChunkName:"person" */'@/views/Update.vue')
+},{
+    path:'/:pathMatch(.*)*',
+    redirect:'/'
 }];
 export default routes;
