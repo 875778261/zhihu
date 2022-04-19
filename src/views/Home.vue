@@ -47,7 +47,7 @@
 
     <!-- 加载更多 -->
     <div class="lazy-more" ref="loadBox">
-      <van-loading size="12px"></van-loading>
+      <van-loading size="12px">精彩数据准备中</van-loading>
     </div>
   </div>
 </template>
@@ -56,7 +56,7 @@
 import NewsItem from "@/components/NewsItem.vue";
 import HomeHead from "@/components/HomeHead.vue";
 import api from "@/api";
-import { reactive, toRefs } from "vue";
+import { onBeforeMount, reactive, toRefs } from "vue";
 import { formatTime } from "@/assets/utils.js";
 export default {
   name: "Home",
@@ -97,10 +97,21 @@ export default {
     });
     console.log(state);
     console.log(toRefs(state));
+    //在第一次组件渲染之前：从服务器获取需要的数据
+    onBeforeMount(async () => {
+      let { date, stories, top_stories } = await api.queryNewsLastest();
+      state.today = date;
+      state.banner = top_stories;
+      state.list.push({
+        date,
+        stories,
+        top_stories,
+      });
+    });
     return {
       ...toRefs(state), //返回内容进行视图渲染
       formatTime, //把方法返回出去才能在模板中使用
-      state
+      state,
     };
   },
   mounted() {
