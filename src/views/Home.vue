@@ -77,7 +77,7 @@ export default {
         },
       ], //获取的轮播图资源
       list: [
-        { date: "20220409" },
+        /* { date: "20220409" },
         {
           stories: [
             {
@@ -87,7 +87,7 @@ export default {
               images: "https://cdn.jsdelivr.net/npm/@vant/assets/apple-1.jpeg",
             },
           ],
-        },
+        }, */
       ],
       /* 
         {date:'20220409',
@@ -99,7 +99,8 @@ export default {
     console.log(toRefs(state));
     //在第一次组件渲染之前：从服务器获取需要的数据
     onBeforeMount(async () => {
-      let { date, stories, top_stories } = await api.queryNewsLastest();
+      let { date, stories, top_stories } = await api.queryNewsLatest();
+      console.log(date);
       state.today = date;
       state.banner = top_stories;
       state.list.push({
@@ -120,17 +121,10 @@ export default {
 };
 </script>
 <style scoped>
-/* .home {
-  display: flex;
-  flex-direction: column;
-} */
-/* 
-.my-swipe .van-swipe-item {
-  color: #fff;
-  font-size: 20px;
-  line-height: 150px;
+.my-swipe {
   text-align: center;
-  background-color: #39a9ed;
 }
- */
-</style>
+.pic{
+  height: 375px;
+}
+</style>>
